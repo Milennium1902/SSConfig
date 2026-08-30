@@ -363,13 +363,15 @@ namespace SSConfig
             Modules64 = null;
             Modules86 = null;
 
-            Regx86modules.Dispose();
+            if (Regx86modules != null)
+            {
+                Regx86modules.Dispose();
+                Regx64modules.Dispose();
+                RegConfig.Dispose();
+            }
+
             Regx86modules = null;
-
-            Regx64modules.Dispose();
             Regx64modules = null;
-
-            RegConfig.Dispose();
             RegConfig = null;
 
             if (Program.DebugWriteRegistry == true)

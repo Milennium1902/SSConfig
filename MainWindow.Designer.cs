@@ -54,6 +54,7 @@
             this.AppName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChosenProfile = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.GeneralPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.DefaultProfileCombo = new System.Windows.Forms.ComboBox();
             this.DefaultProfLabel = new System.Windows.Forms.Label();
             this.EnableDefaultBox = new System.Windows.Forms.CheckBox();
@@ -63,7 +64,6 @@
             this.exportProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddAppDlg = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModulesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppsGrid)).BeginInit();
@@ -177,6 +177,7 @@
             this.TreeView.Size = new System.Drawing.Size(150, 277);
             this.TreeView.TabIndex = 1;
             this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
+            this.TreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView_NodeMouseClick);
             // 
             // MainPropGrid
             // 
@@ -264,6 +265,18 @@
             this.GeneralPanel.Size = new System.Drawing.Size(510, 277);
             this.GeneralPanel.TabIndex = 8;
             // 
+            // button1
+            // 
+            this.button1.Image = global::SSConfig.Properties.Resources.folder;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(3, 70);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(185, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Open installation directory";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DefaultProfileCombo
             // 
             this.DefaultProfileCombo.FormattingEnabled = true;
@@ -271,6 +284,7 @@
             this.DefaultProfileCombo.Name = "DefaultProfileCombo";
             this.DefaultProfileCombo.Size = new System.Drawing.Size(121, 21);
             this.DefaultProfileCombo.TabIndex = 3;
+            this.DefaultProfileCombo.DropDown += new System.EventHandler(this.DefaultProfileCombo_DropDown);
             this.DefaultProfileCombo.SelectionChangeCommitted += new System.EventHandler(this.DefaultProfileCombo_SelectionChangeCommitted);
             // 
             // DefaultProfLabel
@@ -337,18 +351,6 @@
             // AddAppDlg
             // 
             this.AddAppDlg.FileName = "openFileDialog1";
-            // 
-            // button1
-            // 
-            this.button1.Image = global::SSConfig.Properties.Resources.folder;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(3, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Open installation directory";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainWindow
             // 

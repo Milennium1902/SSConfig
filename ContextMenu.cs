@@ -19,8 +19,20 @@ namespace SSConfig
 
         private void deleteProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Control c = ProfileContextMenu.SourceControl;
-            MessageBox.Show(sender.ToString(), "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Profile prof = (Profile)TreeView.SelectedNode.Tag;
+
+            DialogResult areYouSure = MessageBox.Show("Are you sure you want to delete profile " + prof.Name + "? This will break any apps currently set to use this profile.",
+                "SSConfig",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Exclamation);
+
+            if (areYouSure == DialogResult.Yes)
+            {
+                prof.Delete();
+                TreeView.SelectedNode = TreeView.Nodes[2];
+                RefreshTreeView();
+                MainPropGrid.SelectedObject = null;
+            }
         }
     }
 }

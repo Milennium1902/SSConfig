@@ -22,11 +22,7 @@ namespace SSConfig
             displayAppIconsToolStripMenuItem.Checked = Program.DebugShowIcons;
             writeToRegistryToolStripMenuItem.Checked = Program.DebugWriteRegistry;
 
-            DefaultProfileCombo.Items.Clear();
-            foreach (Profile prof in Profile.ProfileList)
-            {
-                DefaultProfileCombo.Items.Add(prof.Name);
-            }
+            UpdateDefaultProfCombo();
 
             bool defaultEnable = CurrentSettings.DefaultProfile != "Passive";
 
@@ -56,7 +52,16 @@ namespace SSConfig
                 node86.Name = "86";
 
             }
-        }      
+        }
+
+        private void UpdateDefaultProfCombo()
+        {
+            DefaultProfileCombo.Items.Clear();
+            foreach (Profile prof in Profile.ProfileList)
+            {
+                DefaultProfileCombo.Items.Add(prof.Name);
+            }
+        }
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -70,6 +75,7 @@ namespace SSConfig
             addAnAppToolStripMenuItem.Enabled = false;
             if (e.Node.FullPath == "General")
             {
+                UpdateDefaultProfCombo();
                 GeneralPanel.Show();
             }
             else if (e.Node.Tag != null) //selected profile settings
@@ -132,6 +138,19 @@ namespace SSConfig
         {
             Profile selectedProfile = (Profile)MainPropGrid.SelectedObject;
             selectedProfile.SaveToRegistry();
+        }
+
+        private void TreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                TreeView.SelectedNode = e.Node;
+            }
+        }
+
+        private void DefaultProfileCombo_DropDown(object sender, EventArgs e)
+        {
+            UpdateDefaultProfCombo();
         }
 
     }

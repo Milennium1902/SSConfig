@@ -8,7 +8,7 @@ namespace SSConfig
 {
     static class Program
     {
-        public const string Version = "0 Beta";
+        public const string Version = "1 Beta";
         public static RegistryKey MainRegistry;
         public static bool DebugShowIcons = true;
         public static bool DebugWriteRegistry = false;
@@ -21,7 +21,7 @@ namespace SSConfig
             
             RegistryKey Software = Registry.CurrentUser.OpenSubKey("Software");
 
-            if (Software.OpenSubKey("LSC").OpenSubKey("SecondSystem") == null)
+            if (Software.OpenSubKey("LSC") == null)
             {
                 MessageBox.Show("Second System is not installed. The application will now quit.", "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
