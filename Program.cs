@@ -9,9 +9,11 @@ namespace SSConfig
     static class Program
     {
         public const string Version = "1 Beta";
+        public const string TargetSSVer = "3.1";
+        public const int DataVersion = 1;
         public static RegistryKey MainRegistry;
         public static bool DebugShowIcons = true;
-        public static bool DebugWriteRegistry = false;
+        public static bool DebugWriteRegistry = true;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -23,6 +25,15 @@ namespace SSConfig
 
             if (Software.OpenSubKey("LSC") == null)
             {
+                RegistryKey RegContext = Software.OpenSubKey("Classes").OpenSubKey("exefile").OpenSubKey("shell", true);
+                RegistryKey SSNewMenu = RegContext.OpenSubKey("Run with Second System", true);
+                if (SSNewMenu != null)
+                {
+                    SSNewMenu.Dispose();
+                    RegContext.DeleteSubKeyTree("Run with Second System");
+                    MessageBox.Show("Second System was uninstalled with drop-down context menu left enabled. The drop-down menu has been removed for your convenience.", "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                RegContext.Dispose();
                 MessageBox.Show("Second System is not installed. The application will now quit.", "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

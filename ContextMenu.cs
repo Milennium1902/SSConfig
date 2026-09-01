@@ -14,7 +14,19 @@ namespace SSConfig
 
         private void exportProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented.", "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Profile prof = (Profile)TreeView.SelectedNode.Tag;
+            using (SaveFileDialog dlg = new SaveFileDialog())
+            {
+                dlg.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+                if (dlg.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                string filePath = dlg.FileName;
+                prof.SaveToFile(filePath);
+                MessageBox.Show("Successfully exported profile.", "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void deleteProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,6 +43,7 @@ namespace SSConfig
                 prof.Delete();
                 TreeView.SelectedNode = TreeView.Nodes[2];
                 RefreshTreeView();
+                CurrentSettings.SaveToRegistry(); //this will update the drop-down menu
                 MainPropGrid.SelectedObject = null;
             }
         }

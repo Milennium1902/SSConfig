@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.VersionLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.SSVer = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CloseBtn = new System.Windows.Forms.Button();
@@ -67,14 +67,14 @@
             this.VersionLabel.TabIndex = 2;
             this.VersionLabel.Text = "Version";
             // 
-            // label3
+            // SSVer
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Developed for Second System 2.4";
+            this.SSVer.AutoSize = true;
+            this.SSVer.Location = new System.Drawing.Point(100, 45);
+            this.SSVer.Name = "SSVer";
+            this.SSVer.Size = new System.Drawing.Size(154, 13);
+            this.SSVer.TabIndex = 3;
+            this.SSVer.Text = "Developed for Second System ";
             // 
             // label2
             // 
@@ -112,7 +112,7 @@
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.SSVer);
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -133,7 +133,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label VersionLabel;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label SSVer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button CloseBtn;

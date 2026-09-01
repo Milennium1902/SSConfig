@@ -5,9 +5,12 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
+using System.Xml.Serialization;
+using System.IO;
+
 namespace SSConfig
 {
-    class Profile
+    public class Profile
     {
         //STATIC STUFF
 
@@ -77,6 +80,14 @@ namespace SSConfig
             MinorVersion = (int)config.GetValue("MinorVersion", 0);
             PlatformID = (int)config.GetValue("PlatformID", 2);
 
+            int csd = (int)config.GetValue("CSDVersionInt", 0);
+            if (csd % 256 == 0)
+            {
+                CSDVersion = csd / 256;
+            }
+
+            DataVersion = Program.DataVersion;
+
             this.RegConfig = config;
             this.Regx86modules = x86modules;
             this.Regx64modules = x64modules;
@@ -142,6 +153,9 @@ namespace SSConfig
             MinorVersion = OgProfile.MinorVersion;
             FriendlyName = OgProfile.FriendlyName;
             PlatformID = OgProfile.PlatformID;
+            CSDVersion = OgProfile.CSDVersion;
+
+            DataVersion = Program.DataVersion;
 
             Modules64 = new Dictionary<string, string>();
             Modules86 = new Dictionary<string, string>();
@@ -165,9 +179,16 @@ namespace SSConfig
             MajorVersion = 0;
             MinorVersion = 0;
             PlatformID = 2;
+            CSDVersion = 0;
+            DataVersion = Program.DataVersion;
             Modules64 = new Dictionary<string, string>();
             Modules86 = new Dictionary<string, string>();
             CreateNewRegistry();
+        }
+
+        public Profile()
+        {
+           
         }
 
         private RegistryKey RegConfig;
@@ -205,18 +226,33 @@ namespace SSConfig
             get;
             set;
         }
+        public int CSDVersion
+        {
+            get;
+            set;
+        }
+
         [Browsable(false)]
+        [XmlIgnore]
         public Dictionary<string, string> Modules64
         {
             get;
             set;
         }
         [Browsable(false)]
+        [XmlIgnore]
         public Dictionary<string, string> Modules86
         {
             get;
             set;
         }
+
+        [Browsable(false)]
+        public List<DictEntry> XML_Modules64 { get; set; }
+        [Browsable(false)]
+        public List<DictEntry> XML_Modules86 { get; set; }
+        [Browsable(false)]
+        public int DataVersion { get; set; }
 
         private void CreateNewRegistry()
         {
@@ -252,6 +288,7 @@ namespace SSConfig
             RegConfig.SetValue("MinorVersion", this.MinorVersion);
             RegConfig.SetValue("FriendlyName", this.FriendlyName, RegistryValueKind.String);
             RegConfig.SetValue("PlatformID", this.PlatformID);
+            RegConfig.SetValue("CSDVersionInt", this.CSDVersion * 256);
         }
 
         public void UpdateModule(string ModuleType, string ImportName, string WrapperName)
@@ -380,6 +417,51 @@ namespace SSConfig
                 Program.MainRegistry.DeleteSubKey(this.Name + "_Modulex64");
                 Program.MainRegistry.DeleteSubKey(this.Name + "_Modulex86");
             }
+        }
+
+        private List<DictEntry> SerializeDict(Dictionary<string, string> dictionary)
+        {
+            List<DictEntry> entries = new List<DictEntry>(dictionary.Count);
+            foreach (string key in dictionary.Keys)
+            {
+                entries.Add(new DictEntry(key, dictionary[key]));
+            }
+            return entries;
+        }
+
+        private Dictionary<string, string> DeserializeDict(List<DictEntry> list)
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            foreach (DictEntry entry in list)
+            {
+                dict.Add(entry.Key, entry.Value);
+            }
+            return dict;
+        }
+
+        public void SaveToFile(string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Profile));
+            TextWriter writer = new StreamWriter(path);
+            XML_Modules64 = SerializeDict(Modules64);
+            XML_Modules86 = SerializeDict(Modules86);
+            serializer.Serialize(writer, this);
+            writer.Dispose();
+            XML_Modules64 = null;
+            XML_Modules86 = null;
+        }
+
+        public void Initialize()
+        {
+            Modules64 = DeserializeDict(XML_Modules64);
+            Modules86 = DeserializeDict(XML_Modules86);
+
+            XML_Modules64 = null;
+            XML_Modules86 = null;
+
+            CreateNewRegistry();
+            SaveToRegistry();
+            ProfileList.Add(this);
         }
     }
 }

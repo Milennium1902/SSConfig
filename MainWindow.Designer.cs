@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Apps");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Profiles");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Apps");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Profiles");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +63,6 @@
             this.renameProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddAppDlg = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModulesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppsGrid)).BeginInit();
@@ -164,16 +163,16 @@
             // 
             this.TreeView.Location = new System.Drawing.Point(5, 30);
             this.TreeView.Name = "TreeView";
-            treeNode1.Name = "General";
-            treeNode1.Text = "General";
-            treeNode2.Name = "Apps";
-            treeNode2.Text = "Apps";
-            treeNode3.Name = "Profiles";
-            treeNode3.Text = "Profiles";
+            treeNode7.Name = "General";
+            treeNode7.Text = "General";
+            treeNode8.Name = "Apps";
+            treeNode8.Text = "Apps";
+            treeNode9.Name = "Profiles";
+            treeNode9.Text = "Profiles";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode7,
+            treeNode8,
+            treeNode9});
             this.TreeView.Size = new System.Drawing.Size(150, 277);
             this.TreeView.TabIndex = 1;
             this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
@@ -312,9 +311,9 @@
             this.NewContextMenuBox.AutoSize = true;
             this.NewContextMenuBox.Location = new System.Drawing.Point(3, 3);
             this.NewContextMenuBox.Name = "NewContextMenuBox";
-            this.NewContextMenuBox.Size = new System.Drawing.Size(386, 17);
+            this.NewContextMenuBox.Size = new System.Drawing.Size(165, 17);
             this.NewContextMenuBox.TabIndex = 0;
-            this.NewContextMenuBox.Text = "Use drop-down context menu (required for custom profiles) (not implemented)";
+            this.NewContextMenuBox.Text = "Use drop-down context menu";
             this.NewContextMenuBox.UseVisualStyleBackColor = true;
             this.NewContextMenuBox.CheckedChanged += new System.EventHandler(this.NewContextMenuBox_CheckedChanged);
             // 
@@ -347,10 +346,6 @@
             this.deleteProfileToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.deleteProfileToolStripMenuItem.Text = "Delete";
             this.deleteProfileToolStripMenuItem.Click += new System.EventHandler(this.deleteProfileToolStripMenuItem_Click);
-            // 
-            // AddAppDlg
-            // 
-            this.AddAppDlg.FileName = "openFileDialog1";
             // 
             // MainWindow
             // 
@@ -413,7 +408,6 @@
         private System.Windows.Forms.ToolStripMenuItem renameProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteProfileToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog AddAppDlg;
     }
 }
 

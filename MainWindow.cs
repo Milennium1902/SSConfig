@@ -34,6 +34,7 @@ namespace SSConfig
             EnableDefaultBox.Checked = defaultEnable;
             DefaultProfLabel.Enabled = defaultEnable;
             DefaultProfileCombo.Enabled = defaultEnable;
+            NewContextMenuBox.Checked = settings.NewContextMenu;
 
             ModulesGrid.Tag = new SelectedModuleListInfo();
         }
@@ -125,7 +126,9 @@ namespace SSConfig
                 foreach (string app in MainSettings.GetRegisteredApps())
                 {
                     DataGridViewRow newRow = NewAppGridRow(app);
-                    newRow.Cells["ChosenProfile"].Value = Program.MainRegistry.GetValue(app).ToString();
+                    string val = Program.MainRegistry.GetValue(app).ToString();
+                    int len = val.Length;
+                    newRow.Cells["ChosenProfile"].Value = val;
                 }
                 this.Cursor = Cursors.Arrow;
                 AppsGrid.CellValueChanged += OnAppsGridValChange;
@@ -138,6 +141,7 @@ namespace SSConfig
         {
             Profile selectedProfile = (Profile)MainPropGrid.SelectedObject;
             selectedProfile.SaveToRegistry();
+            CurrentSettings.SaveToRegistry();
         }
 
         private void TreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)

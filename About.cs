@@ -14,6 +14,7 @@ namespace SSConfig
         {
             InitializeComponent();
             this.VersionLabel.Text = "Version " + Program.Version;
+            this.SSVer.Text = "Developed for Second System " + Program.TargetSSVer;
         }
 
     }

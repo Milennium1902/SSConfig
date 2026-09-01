@@ -16,7 +16,19 @@ namespace SSConfig
 
         private void importProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented.", "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+                if (dlg.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                string filePath = dlg.FileName;
+                FileIO.ReadProfXml(filePath);
+                RefreshTreeView();
+                CurrentSettings.SaveToRegistry();
+            }
         }
 
         private void displayAppIconsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,6 +73,7 @@ namespace SSConfig
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 RefreshTreeView();
+                CurrentSettings.SaveToRegistry();
             }
             dialog.Dispose();
         }   
