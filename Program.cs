@@ -8,7 +8,7 @@ namespace SSConfig
 {
     static class Program
     {
-        public const string Version = "1 Beta";
+        public const string Version = "1 Preliminary";
         public const string TargetSSVer = "3.1";
         public const int DataVersion = 1;
         public static RegistryKey MainRegistry;

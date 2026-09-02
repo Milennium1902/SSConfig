@@ -201,31 +201,37 @@ namespace SSConfig
             get;
             set;
         }
+        [Description("Reported operating system build number.")]
         public int BuildNumber
         {
             get;
             set;
         }
+        [Description("Reported major OS version: 6 for Windows Vista, 7 and 8.x; 10 for Windows 10 and 11.")]
         public int MajorVersion
         {
             get;
             set;
         }
+        [Description("Reported minor OS version: 0 for Windows Vista, 10 and 11; 1 for Windows 7; 2 for Windows 8; 3 for Windows 8.1.")]
         public int MinorVersion
         {
             get;
             set;
         }
+        [Description("Profile name that will show up when drop-down context menu is enabled.")]
         public string FriendlyName
         {
             get;
             set;
         }
+        [Description("Platform ID reported by the operating system: 2 for Windows NT; 1 for Windows 9x and 0 for Win32s. Windows NT system components will generally fail if the value is not 2.")]
         public int PlatformID
         {
             get;
             set;
         }
+        [Description("Reported number of the current service pack. This is not to be confused with the service pack string shown in the “About Windows” box.")]
         public int CSDVersion
         {
             get;

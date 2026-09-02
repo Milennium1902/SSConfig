@@ -9,7 +9,15 @@ namespace SSConfig
     {
         private void renameProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented.", "SSConfig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Profile prof = (Profile)TreeView.SelectedNode.Tag;
+            RenameDlg dlg = new RenameDlg(prof);
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                TreeView.SelectedNode = TreeView.Nodes[2];
+                RefreshTreeView();
+                CurrentSettings.SaveToRegistry();
+            }
+            dlg.Dispose();
         }
 
         private void exportProfileToolStripMenuItem_Click(object sender, EventArgs e)
