@@ -9,7 +9,7 @@ namespace SSConfig
     {
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            About dlg = new About();
+            About dlg = new About(this);
             dlg.ShowDialog();
             dlg.Dispose();
         }

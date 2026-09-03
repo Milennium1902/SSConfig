@@ -60,7 +60,7 @@
             this.AppName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChosenProfile = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.GeneralPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.OpenDirBtn = new System.Windows.Forms.Button();
             this.DefaultProfileCombo = new System.Windows.Forms.ComboBox();
             this.DefaultProfLabel = new System.Windows.Forms.Label();
             this.EnableDefaultBox = new System.Windows.Forms.CheckBox();
@@ -308,7 +308,7 @@
             // 
             // GeneralPanel
             // 
-            this.GeneralPanel.Controls.Add(this.button1);
+            this.GeneralPanel.Controls.Add(this.OpenDirBtn);
             this.GeneralPanel.Controls.Add(this.DefaultProfileCombo);
             this.GeneralPanel.Controls.Add(this.DefaultProfLabel);
             this.GeneralPanel.Controls.Add(this.EnableDefaultBox);
@@ -318,22 +318,22 @@
             this.GeneralPanel.Size = new System.Drawing.Size(510, 277);
             this.GeneralPanel.TabIndex = 8;
             // 
-            // button1
+            // OpenDirBtn
             // 
-            this.button1.Image = global::SSConfig.Properties.Resources.folder;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(3, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Open installation directory";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.OpenDirBtn.Image = global::SSConfig.Properties.Resources.folder7;
+            this.OpenDirBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OpenDirBtn.Location = new System.Drawing.Point(3, 75);
+            this.OpenDirBtn.Name = "OpenDirBtn";
+            this.OpenDirBtn.Size = new System.Drawing.Size(185, 23);
+            this.OpenDirBtn.TabIndex = 4;
+            this.OpenDirBtn.Text = "Open installation directory";
+            this.OpenDirBtn.UseVisualStyleBackColor = true;
+            this.OpenDirBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // DefaultProfileCombo
             // 
             this.DefaultProfileCombo.FormattingEnabled = true;
-            this.DefaultProfileCombo.Location = new System.Drawing.Point(148, 43);
+            this.DefaultProfileCombo.Location = new System.Drawing.Point(148, 48);
             this.DefaultProfileCombo.Name = "DefaultProfileCombo";
             this.DefaultProfileCombo.Size = new System.Drawing.Size(121, 21);
             this.DefaultProfileCombo.TabIndex = 3;
@@ -343,7 +343,7 @@
             // DefaultProfLabel
             // 
             this.DefaultProfLabel.AutoSize = true;
-            this.DefaultProfLabel.Location = new System.Drawing.Point(3, 46);
+            this.DefaultProfLabel.Location = new System.Drawing.Point(0, 51);
             this.DefaultProfLabel.Name = "DefaultProfLabel";
             this.DefaultProfLabel.Size = new System.Drawing.Size(139, 13);
             this.DefaultProfLabel.TabIndex = 2;
@@ -454,7 +454,6 @@
         private System.Windows.Forms.Label DefaultProfLabel;
         private System.Windows.Forms.CheckBox EnableDefaultBox;
         private System.Windows.Forms.CheckBox NewContextMenuBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem displayAppIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeToRegistryToolStripMenuItem;
@@ -462,6 +461,7 @@
         private System.Windows.Forms.ToolStripMenuItem renameProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteProfileToolStripMenuItem;
+        public System.Windows.Forms.Button OpenDirBtn;
     }
 }
 

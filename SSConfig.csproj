@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon1.ico" />
+    <None Include="Resources\folder7.png" />
     <None Include="Resources\output-onlinepngtools.png" />
     <None Include="Resources\noFilter.png" />
   </ItemGroup>
